@@ -1,0 +1,132 @@
+* /home/nalinnet36/desktop/nalin_esim/try1/try1.cir
+
+.include lm555n.sub
+.include lm_741.sub
+.include LM7812.sub
+.include D.lib
+v1  vac gnd sine(0 20 1 0 0)
+d2 gnd gnd 1N4148
+d4 gnd v_rec 1N4148
+c3  v_rec gnd 1000uf
+d1 gnd vac 1N4148
+d3 vac v_rec 1N4148
+c4  f_out gnd 0.01uf
+x2 v_rec gnd f_out LM7812
+x1 gnd net-_c1-pad1_ out_as f_out net-_c2-pad1_ net-_c1-pad1_ net-_r1-pad2_ f_out lm555n
+r1  f_out net-_r1-pad2_ 1k
+r2  net-_r1-pad2_ net-_c1-pad1_ 100k
+c1  net-_c1-pad1_ gnd 1.37u
+c2  net-_c2-pad1_ gnd 0.01uf
+* u13  out_as plot_v1
+x3 ? vh vcin dc2 ? cout dc1 ? lm_741
+x4 ? vcin vl dc2 ? cout1 dc1 ? lm_741
+v5  dc1 gnd 12v
+r4  vh vl 10k
+r5  vl gnd 10k
+r3  dc1 vh 10k
+v6  vcin gnd sine(0 12 2 0 0)
+* u16  cout net-_u14-pad1_ adc_bridge_1
+* u19  net-_u15-pad2_ bout dac_bridge_1
+* u20  bout plot_v1
+* u17  cout plot_v1
+v4  dc2 gnd -12v
+* u18  cout1 plot_v1
+* u23  cout1 net-_u21-pad1_ adc_bridge_1
+* u27  net-_u22-pad2_ bout1 dac_bridge_1
+* u28  bout1 plot_v1
+* u29  o_xnor plot_v1
+* u24  bout bout1 net-_u24-pad3_ net-_u24-pad4_ adc_bridge_2
+* u26  net-_u25-pad3_ o_xnor dac_bridge_1
+* u25  net-_u24-pad3_ net-_u24-pad4_ net-_u25-pad3_ d_xnor
+* u12  c0 plot_v1
+* u10  c1 plot_v1
+* u9  c2 plot_v1
+* u11  c3 plot_v1
+* u8  net-_u1-pad6_ net-_u1-pad5_ net-_u1-pad4_ net-_u1-pad3_ c3 c2 c1 c0 dac_bridge_4
+* u7  out plot_v1
+v2  rst gnd pulse(5 0 1 0 0 20 20)
+* u6  net-_u3-pad21_ out dac_bridge_1
+* u2  o_xnor rst net-_u1-pad1_ net-_u1-pad2_ adc_bridge_2
+* u5  gnd gnd gnd out_as gnd gnd gnd in1 net-_u3-pad9_ net-_u3-pad10_ net-_u3-pad11_ net-_u3-pad12_ net-_u3-pad13_ net-_u3-pad14_ net-_u3-pad15_ net-_u3-pad16_ adc_bridge_8
+* u4  gnd gnd gnd gnd gnd gnd gnd in1 net-_u3-pad1_ net-_u3-pad2_ net-_u3-pad3_ net-_u3-pad4_ net-_u3-pad5_ net-_u3-pad6_ net-_u3-pad7_ net-_u3-pad8_ adc_bridge_8
+v3 in1 gnd  dc 5
+* u14  net-_u14-pad1_ net-_u14-pad2_ nali_inverter
+* u15  net-_u14-pad2_ net-_u15-pad2_ nali_inverter
+* u21  net-_u21-pad1_ net-_u21-pad2_ nali_inverter
+* u22  net-_u21-pad2_ net-_u22-pad2_ nali_inverter
+* u1  net-_u1-pad1_ net-_u1-pad2_ net-_u1-pad3_ net-_u1-pad4_ net-_u1-pad5_ net-_u1-pad6_ nali_counter
+* u3  net-_u3-pad1_ net-_u3-pad2_ net-_u3-pad3_ net-_u3-pad4_ net-_u3-pad5_ net-_u3-pad6_ net-_u3-pad7_ net-_u3-pad8_ net-_u3-pad9_ net-_u3-pad10_ net-_u3-pad11_ net-_u3-pad12_ net-_u3-pad13_ net-_u3-pad14_ net-_u3-pad15_ net-_u3-pad16_ net-_u1-pad3_ net-_u1-pad4_ net-_u1-pad5_ net-_u1-pad6_ net-_u3-pad21_ nali_16_mux
+a1 [cout ] [net-_u14-pad1_ ] u16
+a2 [net-_u15-pad2_ ] [bout ] u19
+a3 [cout1 ] [net-_u21-pad1_ ] u23
+a4 [net-_u22-pad2_ ] [bout1 ] u27
+a5 [bout bout1 ] [net-_u24-pad3_ net-_u24-pad4_ ] u24
+a6 [net-_u25-pad3_ ] [o_xnor ] u26
+a7 [net-_u24-pad3_ net-_u24-pad4_ ] net-_u25-pad3_ u25
+a8 [net-_u1-pad6_ net-_u1-pad5_ net-_u1-pad4_ net-_u1-pad3_ ] [c3 c2 c1 c0 ] u8
+a9 [net-_u3-pad21_ ] [out ] u6
+a10 [o_xnor rst ] [net-_u1-pad1_ net-_u1-pad2_ ] u2
+a11 [gnd gnd gnd out_as gnd gnd gnd in1 ] [net-_u3-pad9_ net-_u3-pad10_ net-_u3-pad11_ net-_u3-pad12_ net-_u3-pad13_ net-_u3-pad14_ net-_u3-pad15_ net-_u3-pad16_ ] u5
+a12 [gnd gnd gnd gnd gnd gnd gnd in1 ] [net-_u3-pad1_ net-_u3-pad2_ net-_u3-pad3_ net-_u3-pad4_ net-_u3-pad5_ net-_u3-pad6_ net-_u3-pad7_ net-_u3-pad8_ ] u4
+a13 [net-_u14-pad1_ ] [net-_u14-pad2_ ] u14
+a14 [net-_u14-pad2_ ] [net-_u15-pad2_ ] u15
+a15 [net-_u21-pad1_ ] [net-_u21-pad2_ ] u21
+a16 [net-_u21-pad2_ ] [net-_u22-pad2_ ] u22
+a17 [net-_u1-pad1_ ] [net-_u1-pad2_ ] [net-_u1-pad3_ net-_u1-pad4_ net-_u1-pad5_ net-_u1-pad6_ ] u1
+a18 [net-_u3-pad1_ net-_u3-pad2_ net-_u3-pad3_ net-_u3-pad4_ net-_u3-pad5_ net-_u3-pad6_ net-_u3-pad7_ net-_u3-pad8_ net-_u3-pad9_ net-_u3-pad10_ net-_u3-pad11_ net-_u3-pad12_ net-_u3-pad13_ net-_u3-pad14_ net-_u3-pad15_ net-_u3-pad16_ ] [net-_u1-pad3_ net-_u1-pad4_ net-_u1-pad5_ net-_u1-pad6_ ] [net-_u3-pad21_ ] u3
+* Schematic Name:                             adc_bridge_1, NgSpice Name: adc_bridge
+.model u16 adc_bridge(in_low=1.0 in_high=2.0 rise_delay=1.0e-9 fall_delay=1.0e-9 ) 
+* Schematic Name:                             dac_bridge_1, NgSpice Name: dac_bridge
+.model u19 dac_bridge(out_low=0.0 out_high=5.0 out_undef=0.5 input_load=1.0e-12 t_rise=1.0e-9 t_fall=1.0e-9 ) 
+* Schematic Name:                             adc_bridge_1, NgSpice Name: adc_bridge
+.model u23 adc_bridge(in_low=1.0 in_high=2.0 rise_delay=1.0e-9 fall_delay=1.0e-9 ) 
+* Schematic Name:                             dac_bridge_1, NgSpice Name: dac_bridge
+.model u27 dac_bridge(out_low=0.0 out_high=5.0 out_undef=0.5 input_load=1.0e-12 t_rise=1.0e-9 t_fall=1.0e-9 ) 
+* Schematic Name:                             adc_bridge_2, NgSpice Name: adc_bridge
+.model u24 adc_bridge(in_low=1.0 in_high=2.0 rise_delay=1.0e-9 fall_delay=1.0e-9 ) 
+* Schematic Name:                             dac_bridge_1, NgSpice Name: dac_bridge
+.model u26 dac_bridge(out_low=0.0 out_high=5.0 out_undef=0.5 input_load=1.0e-12 t_rise=1.0e-9 t_fall=1.0e-9 ) 
+* Schematic Name:                             d_xnor, NgSpice Name: d_xnor
+.model u25 d_xnor(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 ) 
+* Schematic Name:                             dac_bridge_4, NgSpice Name: dac_bridge
+.model u8 dac_bridge(out_low=0.0 out_high=5.0 out_undef=0.5 input_load=1.0e-12 t_rise=1.0e-9 t_fall=1.0e-9 ) 
+* Schematic Name:                             dac_bridge_1, NgSpice Name: dac_bridge
+.model u6 dac_bridge(out_low=0.0 out_high=5.0 out_undef=0.5 input_load=1.0e-12 t_rise=1.0e-9 t_fall=1.0e-9 ) 
+* Schematic Name:                             adc_bridge_2, NgSpice Name: adc_bridge
+.model u2 adc_bridge(in_low=1.0 in_high=2.0 rise_delay=1.0e-9 fall_delay=1.0e-9 ) 
+* Schematic Name:                             adc_bridge_8, NgSpice Name: adc_bridge
+.model u5 adc_bridge(in_low=1.0 in_high=2.0 rise_delay=1.0e-9 fall_delay=1.0e-9 ) 
+* Schematic Name:                             adc_bridge_8, NgSpice Name: adc_bridge
+.model u4 adc_bridge(in_low=1.0 in_high=2.0 rise_delay=1.0e-9 fall_delay=1.0e-9 ) 
+* Schematic Name:                             nali_inverter, NgSpice Name: nali_inverter
+.model u14 nali_inverter(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 instance_id=1 ) 
+* Schematic Name:                             nali_inverter, NgSpice Name: nali_inverter
+.model u15 nali_inverter(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 instance_id=1 ) 
+* Schematic Name:                             nali_inverter, NgSpice Name: nali_inverter
+.model u21 nali_inverter(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 instance_id=1 ) 
+* Schematic Name:                             nali_inverter, NgSpice Name: nali_inverter
+.model u22 nali_inverter(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 instance_id=1 ) 
+* Schematic Name:                             nali_counter, NgSpice Name: nali_counter
+.model u1 nali_counter(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 instance_id=1 ) 
+* Schematic Name:                             nali_16_mux, NgSpice Name: nali_16_mux
+.model u3 nali_16_mux(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 instance_id=1 ) 
+.tran 0.1e-00 20e-00 0e-00
+
+* Control Statements 
+.control
+run
+print allv > plot_data_v.txt
+print alli > plot_data_i.txt
+plot v(out_as)
+plot v(bout)
+plot v(cout)
+plot v(cout1)
+plot v(bout1)
+plot v(o_xnor)
+plot v(c0)
+plot v(c1)
+plot v(c2)
+plot v(c3)
+plot v(out)
+.endc
+.end

@@ -1,0 +1,62 @@
+* /home/nalinnet36/Desktop/nalin_esim/try1/try1.cir
+
+* EESchema Netlist Version 1.1 (Spice format) creation date: Tue 08 Mar 2022 04:48:06 PM UTC
+
+* To exclude a component from the Spice Netlist add [Spice_Netlist_Enabled] user FIELD set to: N
+* To reorder the component spice node sequence add [Spice_Node_Sequence] user FIELD and define sequence: 2,1,0
+
+* Sheet Name: /
+v1  Vac GND sine		
+D2  GND GND eSim_Diode		
+D4  GND V_rec eSim_Diode		
+C3  V_rec GND 1000uF		
+D1  GND Vac eSim_Diode		
+D3  Vac V_rec eSim_Diode		
+C4  F_out GND 0.01uF		
+X2  V_rec GND F_out LM_7812		
+X1  GND Net-_C1-Pad1_ out_as F_out Net-_C2-Pad1_ Net-_C1-Pad1_ Net-_R1-Pad2_ F_out LM555N		
+R1  F_out Net-_R1-Pad2_ 1k		
+R2  Net-_R1-Pad2_ Net-_C1-Pad1_ 100k		
+C1  Net-_C1-Pad1_ GND 1.37u		
+C2  Net-_C2-Pad1_ GND 0.01uF		
+U13  out_as plot_v1		
+X3  ? vh vcin dc2 ? cout dc1 ? lm_741		
+X4  ? vcin vl dc2 ? cout1 dc1 ? lm_741		
+v5  dc1 GND 12V		
+R4  vh vl 10k		
+R5  vl GND 10k		
+R3  dc1 vh 10k		
+v6  vcin GND sine		
+U16  cout Net-_U14-Pad1_ adc_bridge_1		
+U19  Net-_U15-Pad2_ bout dac_bridge_1		
+U20  bout plot_v1		
+U17  cout plot_v1		
+v4  dc2 GND -12V		
+U18  cout1 plot_v1		
+U23  cout1 Net-_U21-Pad1_ adc_bridge_1		
+U27  Net-_U22-Pad2_ bout1 dac_bridge_1		
+U28  bout1 plot_v1		
+U29  o_xnor plot_v1		
+U24  bout bout1 Net-_U24-Pad3_ Net-_U24-Pad4_ adc_bridge_2		
+U26  Net-_U25-Pad3_ o_xnor dac_bridge_1		
+U25  Net-_U24-Pad3_ Net-_U24-Pad4_ Net-_U25-Pad3_ d_xnor		
+U12  c0 plot_v1		
+U10  c1 plot_v1		
+U9  c2 plot_v1		
+U11  c3 plot_v1		
+U8  Net-_U1-Pad6_ Net-_U1-Pad5_ Net-_U1-Pad4_ Net-_U1-Pad3_ c3 c2 c1 c0 dac_bridge_4		
+U7  out plot_v1		
+v2  rst GND pulse		
+U6  Net-_U3-Pad21_ out dac_bridge_1		
+U2  o_xnor rst Net-_U1-Pad1_ Net-_U1-Pad2_ adc_bridge_2		
+U5  GND GND GND out_as GND GND GND in1 Net-_U3-Pad9_ Net-_U3-Pad10_ Net-_U3-Pad11_ Net-_U3-Pad12_ Net-_U3-Pad13_ Net-_U3-Pad14_ Net-_U3-Pad15_ Net-_U3-Pad16_ adc_bridge_8		
+U4  GND GND GND GND GND GND GND in1 Net-_U3-Pad1_ Net-_U3-Pad2_ Net-_U3-Pad3_ Net-_U3-Pad4_ Net-_U3-Pad5_ Net-_U3-Pad6_ Net-_U3-Pad7_ Net-_U3-Pad8_ adc_bridge_8		
+v3  in1 GND DC		
+U14  Net-_U14-Pad1_ Net-_U14-Pad2_ nali_inverter		
+U15  Net-_U14-Pad2_ Net-_U15-Pad2_ nali_inverter		
+U21  Net-_U21-Pad1_ Net-_U21-Pad2_ nali_inverter		
+U22  Net-_U21-Pad2_ Net-_U22-Pad2_ nali_inverter		
+U1  Net-_U1-Pad1_ Net-_U1-Pad2_ Net-_U1-Pad3_ Net-_U1-Pad4_ Net-_U1-Pad5_ Net-_U1-Pad6_ nali_counter		
+U3  Net-_U3-Pad1_ Net-_U3-Pad2_ Net-_U3-Pad3_ Net-_U3-Pad4_ Net-_U3-Pad5_ Net-_U3-Pad6_ Net-_U3-Pad7_ Net-_U3-Pad8_ Net-_U3-Pad9_ Net-_U3-Pad10_ Net-_U3-Pad11_ Net-_U3-Pad12_ Net-_U3-Pad13_ Net-_U3-Pad14_ Net-_U3-Pad15_ Net-_U3-Pad16_ Net-_U1-Pad3_ Net-_U1-Pad4_ Net-_U1-Pad5_ Net-_U1-Pad6_ Net-_U3-Pad21_ nali_16_mux		
+
+.end
