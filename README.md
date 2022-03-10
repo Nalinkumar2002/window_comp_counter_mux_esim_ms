@@ -1,14 +1,8 @@
 </br>
 
-<div align="center">
-  
-![-------](Images/rainbowline.png)
-
-![logo](Images/logo.png)
-
-![-------](Images/rainbowline.png)
-
+# 📚 Window Comparator Along With MOD-16 Counter For Counting Based Data Line Selection Operation
 </br>
+
 
 
 ![Size](https://img.shields.io/github/repo-size/Nalinkumar2002/window_comp_counter_mux_esim_ms?color=red)
@@ -20,34 +14,24 @@
 
 </br>
 
-# 📚 Window Comparator Along With MOD-16 Counter For Counting Based Data Line Selection Operation
+
 
 
 This repository gives a detailed report on the design of a Window Comparator Along With MOD-16 Counter For Counting Based Data Line Selection Operation using open-source EDA tools. The simulation being carried out is in mixed-mode (i.e.) both analog and digital simulation. Later the obtained simulation, is verified for it's correctness and functionality.
 
-<br>
-
-<p align="center">
-  <img src="https://github.com/Nalinkumar2002/barrel_shifter_snps_cc/blob/main/Images/bs_logo.gif">
-</p>
-
+ 
 <br>
 
 # 📑 Table of Contents
 
 * [Introduction](#-Introduction) 
-* [8x4 Right Barrel Shifter](#-8x4-Right-Barrel-Shifter) 
-    * [Circuit Schematic](#-Circuit-Schematic) 
-    * [Truth Table for Control Shift Bits in 8 × 4 Barrel Shifter](#-Truth-Table-for-Control-Shift-Bits-in-8-×-4-Barrel-Shifter) 
-    * [Circuit Output Waveforms](#-Circuit-Output-Waveforms) 
+* [Window Comparator Along With MOD_16 Counter and 16x1 Mux](#-Window-Comparator-Along-With-MOD-16-Counter-and-16x1-Mux)
 * [Software Tools Used](#-Software-Tools-Used) 
-* [Synopsis Custom Compiler Platform](#-Synopsis-Custom-Compiler-Platform) 
-* [Implemented Circuit Design using Synopsis](#-Implemented-Circuit-Design-using-Synopsis) 
+* [Implemented Circuit Design using eSim](#-Implemented-Circuit-Design-using-eSim) 
     * [Schematics](#-Schematics) 
-    * [Symbol](#-Symbol) 
-    * [Testbench Design](#-Testbench-Design) 
 * [Resultant Waveforms](#-Resultant-Waveforms) 
-* [Resultant Waveforms For Different Control Shift Input](#-Resultant-Waveforms-For-Different-Control-Shift-Input) 
+* [Netlist](#-Netlist)
+* [Run_this_project](#-Run-this-project)
 * [Author](#-Author)
 * [Acknowledgements](#-Acknowledgements)
 * [References](#-References)
