@@ -11,21 +11,19 @@
 </br>
 
 
-![Size](https://img.shields.io/github/repo-size/Nalinkumar2002/barrel_shifter_snps_cc?color=red)
-![Last Commit](https://img.shields.io/github/last-commit/Nalinkumar2002/barrel_shifter_snps_cc?color=green)
-![license](https://img.shields.io/github/license/Nalinkumar2002/barrel_shifter_snps_cc?color=blue)
+![Size](https://img.shields.io/github/repo-size/Nalinkumar2002/window_comp_counter_mux_esim_ms?color=red)
+![Last Commit](https://img.shields.io/github/last-commit/Nalinkumar2002/window_comp_counter_mux_esim_ms?color=green)
+![tool](https://img.shields.io/badge/Tool-eSim-28A745)
 
-![tool](https://img.shields.io/badge/Tool-Synopsis%20Custom%20Compiler-28A745)
-![pdk](https://img.shields.io/badge/PDK-SAED%2028nm-blueviolet)
 
 </div>
 
 </br>
 
-# 📚 8x4 Right Barrel Shifter using NMOS Pass Transistor Logic
+# 📚 Window Comparator Along With MOD-16 Counter For Counting Based Data Line Selection Operation
 
 
-This repository gives a detailed report on the design of a 8x4 Right Barrel Shifter using NMOS Pass Transistor logic using 28nm technology node. This design is implemented and simulated using **Synopsys Custom Design Compiler** for the event [_Cloud Based Analog IC Design Hackathon_](https://hackathoniith.in) conducted by the [Department of Electrical Engineering at IIT Hyderabad](https://ee.iith.ac.in), and sponsored by [Synopsys India](https://www.synopsys.com/company/contact-synopsys/office-locations/india/about-synopsys-india.html) and [VLSI System Design (VSD) Corp.](https://www.vlsisystemdesign.com) 
+This repository gives a detailed report on the design of a Window Comparator Along With MOD-16 Counter For Counting Based Data Line Selection Operation using open-source EDA tools. The simulation being carried out is in mixed-mode (i.e.) both analog and digital simulation. Later the obtained simulation, is verified for it's correctness and functionality.
 
 <br>
 
@@ -59,9 +57,8 @@ This repository gives a detailed report on the design of a 8x4 Right Barrel Shif
 
 # 📝 Introduction
 
-An Arithmetic logic unit (ALU) in a processor can performs various arithmetic operations and logical operations. Multiplication operation is done by multiplying of data using AND gate and addition of partial products using full adders or half adders. It also requires a shifter to shift partial products so that they can be added in correct format and can be validated. Hence these modules play an important role in characterizing the performance of processors. 
+Window comparator is a circuit which uses the two comparator in parallel to determine if a signal is between tworeference voltages. If the input signal is outside of the window, the output is Low. If the input signal is within the window, the output is High. A MOD-16 counter has 16 states in its count sequence and used for counting operation. A 16x1 Multiplexer is also used in this design for data selection operation. In this paper, a window comparator along with mod-16 counter followed by 16x1 multiplexer is designed and output waveforms are plotted. This design can be used for two reference voltages based comparing followed by counting based data line selection applications.
 
- Thereare different types of shifters like serial shifter, parallel shifterswhich shifts data based on clock cycle of microprocessor.They require n cycle to shift n-data bits. To overcome thisdisadvantage, Barrel shifters are used. Barrel shifter is used to shift or rotate n-bits in single clock cycle based on the control shift bits configuration. It is usually consists of multiplexers connected parallel to each other. It works completely on combinational logic and shifts data in a single clock cycle. Due to its advantage, RISC processors use these barrel shifters embedded in ALU.
  
  </br>
 
@@ -69,135 +66,53 @@ An Arithmetic logic unit (ALU) in a processor can performs various arithmetic op
 
 </br>
 
-# 📝 8x4 Right Barrel Shifter
+# 📝 Window Comparator Along With MOD-16 Counter and 16x1 Mux
 
-An 8x4 rightbarrel shifter using NMOS pass transistor is designed. Thereare 8 input bit pins, 4 output bit pins and 5 control shift bitpins. The 8 input bit pins are In0, In1, In2, In3, In4, In5, In6,In7. The 4 output bit pins are Out0, Out1, Out2, Out3. The 5control shift bit pins are Sh0, Sh1, Sh2, Sh3, Sh4, Sh5. Gateterminal of each NMOS transistor is connected to any onecontrol shift signal as input. Anyone of signal from Sh0 toSh4 is enabled high and remaining signal are made low. 
 
-If the control shift signal *Sh0* is made `HIGH` then, 
-
-In0 --> Out0
-
-In1 --> Out1
-
-In2 --> Out2
-
-In3 --> Out3
-
-Similarly, If *Sh1* is enabled,then the outputs are right shifted by one bit. 
-
-For example, Now consider the input bit pattern
-
-<table>
-  <tr><th>Input Signal</th><th>Input Value</th></tr>
-  <tr><td>In0</td><td>1</td></tr>
-  <tr><td>In1</td><td>1</td></tr>
-  <tr><td>In2</td><td>0</td></tr>
-  <tr><td>In3</td><td>0</td></tr>
-  <tr><td>In4</td><td>1</td></tr>
-  <tr><td>In5</td><td>0</td></tr>
-  <tr><td>In6</td><td>1</td></tr>
-  <tr><td>In7</td><td>0</td></tr>
-</table>
-
-and control shift bits as
-
-<table>
-  <tr><th>Control Shift Signal</th><th>Control Shift Value</th></tr>
-  <tr><td>Sh0</td><td>0</td></tr>
-  <tr><td>Sh1</td><td>0</td></tr>
-  <tr><td>Sh2</td><td>1</td></tr>
-  <tr><td>Sh3</td><td>0</td></tr>
-  <tr><td>Sh4</td><td>0</td></tr>
-</table>
-
-> Control Shift Bit *Sh2* is made `HIGH`
-
-the resultant outputs are
-
-<table>
-  <tr><th>Output Signal</th><th>Output Value</th></tr>
-  <tr><td>Out0</td><td>0</td></tr>
-  <tr><td>Out1</td><td>0</td></tr>
-  <tr><td>Out2</td><td>1</td></tr>
-  <tr><td>Out3</td><td>0</td></tr>
- 
-</table>
+The Operational amplifier also known as Op-Amp which are mainly used for mathematical operations like addition, subtraction, integration, differentiation and so on. An Op-Amp
+based comparator is used for comparing analogue voltage level with another reference voltage VREF and produce an output signal based on the magnitudes of two input voltages. If the given analog voltage is greater than the reference voltage, the output of comparator is `+VCC` . If the given analog voltage is lower than reference voltage, the output of comparator is `-VCC` . A window comparator is a circuit consists of two Op-Amp in parallel which can take two reference voltages VH and VL and an input analog voltage and produces output based on the comparison of voltages. If the given input voltage lies between two reference voltages, then the output of comparator is `’HIGH’`. Otherwise, the output of comparator is `’LOW’`. This output is given to a MOD-16 counter. MOD-16 counter is also called as 4 bit counter, which have 16 states and count from `’0000’` to `’1111’`. After reaching `’1111’` state it reset to ’0000’ state. The output of comparator is given to 16x1 multiplexer. Multiplexer is a combinational circuit which has maximum of 2n data inputs, `‘n’` selection lines and single output line. Among these data inputs only one will be connected to the output based on the select line values. So, a `16x1` mux have `16` data input lines, `4` select lines and one output line. The output of the `MOD-16` counter is given as input to the `4` select lines of the multiplexer. So, based on the count of counter the corresponding data line is connected to the output line.
 
 
 
-## 📋 Circuit Schematic
-
-Schematic of 8x4 Barrel Shifter is displayed below.
-
-![bsintro](Images/bs_intro.png)
-
-## 📋 Truth Table for Control Shift Bits in 8 × 4 Barrel Shifter
-
-<table>
- <tr><th colspan="5" style="text-align:center" > Control Shift Bits </th><th colspan="5"> Output </th></tr>
- <tr><td>Sh0</td><td>Sh1</td><td>Sh2</td><td>Sh3</td><td>Sh4</td><td>Out0</td><td>Out1</td><td>Out2</td><td>Out3</td></tr>
- <tr><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>In0</td><td>In1</td><td>In2</td><td>In3</td></tr>
- <tr><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>In1</td><td>In2</td><td>In3</td><td>In4</td></tr>
- <tr><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>In2</td><td>In3</td><td>In4</td><td>In5</td></tr>
- <tr><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>In3</td><td>In4</td><td>In5</td><td>In6</td></tr>
- <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>In4</td><td>In5</td><td>In6</td><td>In7</td></tr>
-</table>
-
-
-
-## 📋 Circuit Output Waveforms
-
-* Output waveforms are plotted for Control Shift bit *Sh2* is made `HIGH` 
-
-![bsintroout](Images/bs_intro_out.png)
-
-</br>
-
-*[Back To Top](#-Table-of-Contents)* ⤴️ 
-
-</br>
 
 # 📝 Software Tools Used
 
 <br>
 
-🌟 OS: CentOS Linux 7.9.2009
+🌟 eSim 
 
- * The CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of Red Hat Enterprise Linux (RHEL)
+  * eSim is a free and open-sourced EDA tool for circuit design, simulation, analysis and PCB design. It is an integrated tool built using free/libre and open source software such as KiCad, Ngspice, Verilator, makerchip-app, sandpiper-saas and GHDL. eSim is released under GPL.
+  
+   🔗 https://esim.fossee.in/home
 
-🌟 Synopsys Custom Compiler
 
- * The Synopsys Custom Compiler™ design environment is a modern solution for full-custom analog, custom digital, and mixed-signal IC design. As the heart of the Synopsys Custom Design Platform, Custom Compiler provides design entry, simulation management and analysis, and custom layout editing features. It delivers industry-leading productivity, performance, and ease-of-use while remaining easy to adopt for users of legacy tools.
+🌟 KiCad
+
+ * KiCad's Schematic Editor supports everything from the most basic schematic to a complex hierarchical design with hundreds of sheets. It helps to create our own custom symbols or use some of the thousands found in the official KiCad library. We can verify our design with integrated SPICE simulator and electrical rules checker.
     
-   🔗 https://www.synopsys.com/implementation-and-signoff/custom-design-platform/custom-compiler.html
+   🔗 https://www.kicad.org/
 
-🌟 PrimeSim 
+🌟 Ngspice
 
- *  PrimeSim™ SPICE is a high-performance SPICE circuit simulator for analog, RF, and mixed-signal applications. PrimeSim SPICE offers a unique multi-core/multi-machine scaling and heterogeneous compute acceleration on GPU/CPU delivering faster runtime with sign-off accuracy.
+ *  Ngspice is a mixed-level/mixed-signal electronic circuit simulator. Ngspice implements three classes of analysis: nonlinear DC analyses, Nonlinear transient analyses, linear AC analyses.
 
-   🔗 https://www.synopsys.com/implementation-and-signoff/ams-simulation/primesim-spice.html
+   🔗 http://ngspice.sourceforge.net/
+   
+🌟 Verilator
 
-🌟 Synopsis SAED 32/28nm PDK
+ *  Verilator is a free and open-source software tool which converts Verilog code to a cycle-accurate behavioral model in C++ or SystemC.
 
- * The Synopsys 28nm Process Design Kit(PDK)
+   🔗 https://www.veripool.org/verilator/
+   
+🌟 Makerchip
 
-</br>
+ *  A web-based IDE that is used to design and simulate digital circuits using Verilog, and the language extension of Verilog, TL-Verilog.
 
-*[Back To Top](#-Table-of-Contents)* ⤴️ 
-
-</br>
-
-# 📝 Synopsis Custom Compiler Platform
-
-* Starting of Synopsis Custom Compiler tool and opening of circuit schematic from library manager of Synopsis custom compiler tool are show below.
-
-![bssnps](Images/bs_snps_0.png)
-
-![bssnps](Images/bs_snps_1.png)
-
-![bssnps](Images/bs_snps_2.png)
-
-![bssnps](Images/bs_snps_3.png)
+   🔗   https://www.makerchip.com/
+   
+   
+   
+ 
 
 </br>
 
@@ -206,88 +121,37 @@ Schematic of 8x4 Barrel Shifter is displayed below.
 </br>
 
 
-# 📝 Implemented Circuit Design using Synopsis
+# 📝 Implemented Circuit Design using eSim
 
 ## 📋 Schematics
 
-Schematic designed for 8x4 Right Barrel Shifter using synopsis tool and SAED 28nm PDK.
+Schematic designed for window comparator
 
-![bssch](Images/bs_sch.png)
+![bssch](Images/sch3.png)
 
-## 📋 Symbol
+Schematic designed for astable multivibrator
 
-Symbol of implemented 8x4 Barrel Shifter.
+![bssch](Images/sch2.png)
 
-![bssym](Images/bs_sym.png)
+Schematic designed for 4-bit counter and 16x1 mux 
 
-## 📋 Testbench Design
+![bssch](Images/sch4.png)
 
-Testbench design for giving input signal, control shift signal and other power supplies.
+Complete Schematic design
 
-![bstb](Images/bs_sch_tb2.png)
+![bssch](Images/sch1.png)
 
-</br>
-
-*[Back To Top](#-Table-of-Contents)* ⤴️ 
-
-</br>
 
 # 📝 Resultant Waveforms
 
-Resultant waveform of implemented 8x4 Barrel Shifter
+Resultant waveform of window comparator
 
-![bstbout](Images/bs_plot_tb2.png)
+![bstbout](Images/o2.png)
 
-As, the control shift signal *Sh2* is made `HIGH`, the output values are right shifted by 2 bit positions.
+Resultant waveform of Window Comparator Along With MOD-16 Counter and 16x1 Mux
 
-<table>
- <tr><th colspan="5" style="text-align:center" > Control Shift Bits </th><th colspan="5"> Output </th></tr>
- <tr><td>Sh0</td><td>Sh1</td><td>Sh2</td><td>Sh3</td><td>Sh4</td><td>Out0</td><td>Out1</td><td>Out2</td><td>Out3</td></tr>
- <tr><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>In2</td><td>In3</td><td>In4</td><td>In5</td></tr>
-</table>
+![bstbout](Images/o4.png)
 
-## 📋 Resultant Waveforms For Different Control Shift Input 
-
-
-* For the control shift signal *Sh0* is made `HIGH`, the output values are 
-
-<table>
- <tr><th colspan="5" style="text-align:center" > Control Shift Bits </th><th colspan="5"> Output </th></tr>
- <tr><td>Sh0</td><td>Sh1</td><td>Sh2</td><td>Sh3</td><td>Sh4</td><td>Out0</td><td>Out1</td><td>Out2</td><td>Out3</td></tr>
- <tr><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>In0</td><td>In1</td><td>In2</td><td>In3</td></tr>
-</table>
-
-![bstbout](Images/bs_plot_tb0.png)
-
-* For the control shift signal *Sh1* is made `HIGH`, the output values are 
-
-<table>
- <tr><th colspan="5" style="text-align:center" > Control Shift Bits </th><th colspan="5"> Output </th></tr>
- <tr><td>Sh0</td><td>Sh1</td><td>Sh2</td><td>Sh3</td><td>Sh4</td><td>Out0</td><td>Out1</td><td>Out2</td><td>Out3</td></tr>
- <tr><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>In1</td><td>In2</td><td>In3</td><td>In4</td></tr>
-</table>
-
-![bstbout](Images/bs_plot_tb1.png)
-
-* For the control shift signal *Sh3* is made `HIGH`, the output values are 
-
-<table>
- <tr><th colspan="5" style="text-align:center" > Control Shift Bits </th><th colspan="5"> Output </th></tr>
- <tr><td>Sh0</td><td>Sh1</td><td>Sh2</td><td>Sh3</td><td>Sh4</td><td>Out0</td><td>Out1</td><td>Out2</td><td>Out3</td></tr>
- <tr><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>In3</td><td>In4</td><td>In5</td><td>In6</td></tr>
-</table>
-
-![bstbout](Images/bs_plot_tb3.png)
-
-* For the control shift signal *Sh4* is made `HIGH`, the output values are 
-
-<table>
- <tr><th colspan="5" style="text-align:center" > Control Shift Bits </th><th colspan="5"> Output </th></tr>
- <tr><td>Sh0</td><td>Sh1</td><td>Sh2</td><td>Sh3</td><td>Sh4</td><td>Out0</td><td>Out1</td><td>Out2</td><td>Out3</td></tr>
- <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>In4</td><td>In5</td><td>In6</td><td>In7</td></tr>
-</table>
-
-![bstbout](Images/bs_plot_tb4.png)
 
 </br>
 
@@ -297,7 +161,7 @@ As, the control shift signal *Sh2* is made `HIGH`, the output values are right s
 
 # 📝 Netlist
 
-The Netlist for the designed circuit is generated after simulating the circuit testbench. The Netlist is obtained using **PrimeSim**.
+The Netlist for the designed circuit is generated after simulating the circuit.
 
 ```
 *  Generated for: PrimeSim
@@ -396,6 +260,21 @@ v38 sh4 gnd! dc=1.05
 
 </br>
 
+# 🚶 Run this project 
+
+1. Clone this repository locally 
+```
+git clone https://github.com/Nalinkumar2002/window_comp_counter_mux_esim_ms.git
+```
+2. Go to *nali_win_comp_count_mux* directory
+```
+cd nali_win_comp_count_mux
+```
+3. Run NgSpice
+```
+ngspice nali_win_comp_count_mux.cir.out
+```
+
 # 📜 Author
  
  🖊️ Nalinkumar S, Pre-Final year student, B.E. ECE, Madras Institute of Technology, Anna University, Chennai, India
@@ -405,24 +284,22 @@ v38 sh4 gnd! dc=1.05
 
  📖 Kunal Ghosh, Co-Founder of VLSI System Design (VSD) Corp. Pvt. Ltd. - kunalpghosh@gmail.com
  
- 📖 [Synopsys Team/Company](https://www.synopsys.com/)
+ 📖 Sumanto Kar, eSim Team, FOSSEE
  
- 📖 Chinmay panda, Technical Officer, Department of Electrical Engineering, IIT Hyderabad
+ 📖 Steve Hoover, Founder, Redwood EDA
+ 
+ 📖 FOSSEE, IIT Bombay
 
 # 🔍 References
 
-📔 P. Ashok Babu, V. Siva Nagaraju, Ramya Mariserla, Rajeev Ratna
-Vallabhuni, ”Realization of 8 x 4 Barrel shifter with 4-bit binary to Gray
-converter using FinFET for Low Power Digital Applications,” in Journal
-of Physics: Conference Series, 2021.
+📔 Laknaur, R. Xiao, S. Durbha and H. Wang, ”Design of a Window Comparator with Adaptive Error Threshold for Online Testing Applications,”
+8th International Symposium on Quality Electronic Design (ISQED’07),
+2007.
 
-📔 Bari, Surajit De, Debashis Sarkar, Angsuman , ”Design of low power,
-high speed 4 bit binary to Gray converter with 8 × 4 barrel shifter using
-nano dimensional MOS transistor for arithmetical, logical and telecommunication circuit and system application,” Microsystem Technologies,
-2019.
+📔  R. Singh and K. S. Pande, ”4-bit Counter Using High-Speed Low-Voltage
+CML D-Flipflops,” 2018 3rd International Conference on Communication
+and Electronics Systems (ICCES), 2018.
 
-📔 J. S. Deepak Vudatha, N. Kota, P. Gutha, B. Sreeja and S. P. Rajeev,
-”VLSI Design of Low Power 8 × 4 Barrel Shifter using 90 nm TG
-technology,” 2021 Fourth International Conference on Microelectronics,
-Signals Systems (ICMSS), 2021.
-
+📔  J. Park, J. Song, S. Lim and S. Kim, ”A high speed and low power
+41 multiplexer with cascoded clock control,” 2010 IEEE Asia Pacific
+Conference on Circuits and Systems, 2010.
