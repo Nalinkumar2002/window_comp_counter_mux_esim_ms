@@ -29,6 +29,8 @@ This repository gives a detailed report on the design of a Window Comparator Alo
 * [Software Tools Used](#-Software-Tools-Used) 
 * [Implemented Circuit Design using eSim](#-Implemented-Circuit-Design-using-eSim) 
     * [Schematics](#-Schematics) 
+    * [Verilog_codes](#-Verilog-codes)
+    * [Makerchip](#-Makerchip)
 * [Resultant Waveforms](#-Resultant-Waveforms) 
 * [Netlist](#-Netlist)
 * [Run_this_project](#-Run-this-project)
@@ -125,6 +127,81 @@ Complete Schematic design
 
 ![bssch](Images/sch1.png)
 
+## 📋 Verilog Codes
+
+- The digital block is the *nali_16_mux.v* which is built using the following verilog code
+```verilog
+module nali_16_mux (input wire[15:0] in, input wire[3:0] s, output reg out);
+
+always @ (1)
+case(s)
+
+	0 : out = in[0];
+	1 : out = in[1];
+	2 : out = in[2];
+	3 : out = in[3];
+	4 : out = in[4];
+	5 : out = in[5];
+	6 : out = in[6];
+	7 : out = in[7];
+	8 : out = in[8];
+	9 : out = in[9];
+	10: out = in[10];
+	11: out = in[11];
+	12: out = in[12];
+	13: out = in[13];
+	14: out = in[14];
+	15: out = in[15];
+endcase
+endmodule
+
+```
+
+- The digital block is the *nali_counter.v* which is built using the following verilog code
+```verilog
+module nali_counter (clk,rst,count);
+
+input clk,rst;
+output reg[3:0] count;
+
+always @ (posedge clk , posedge rst ) begin
+	if (rst)
+		count <= 0;
+	else
+		count <= count+1;
+	end
+endmodule
+```
+
+- The digital block is the *nali_inverter.v* which is built using the following verilog code
+```verilog
+module nali_inverter (inv_out, inv_in);
+	output inv_out;
+	input inv_in;
+	supply0 GND; 
+	supply1 PWR;
+
+	pmos(inv_out, PWR, inv_in);
+	nmos(inv_out, GND, inv_in);
+endmodule
+
+
+```
+
+
+## 📋 Makerchip
+
+* Makerchip Platform
+
+![bstbout](Images/mcp4.png)
+
+* 16x1 Mux
+
+![bstbout](Images/mcp2.png)
+
+* 4-Bit Counter
+
+![bstbout](Images/mcp5.png)
 
 # 📝 Resultant Waveforms
 
