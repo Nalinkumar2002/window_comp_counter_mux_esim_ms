@@ -376,7 +376,8 @@ git clone https://github.com/Nalinkumar2002/window_comp_counter_mux_esim_ms.git
 ```
 cd nali_win_comp_count_mux
 ```
-3. Run NgSpice
+
+3. Create the Ngveri models and Run NgSpice
 ```
 ngspice nali_win_comp_count_mux.cir.out
 ```
